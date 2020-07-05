@@ -30,7 +30,7 @@ namespace SimpleAPI.Controllers
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = 40,
+                TemperatureC = 45,
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
