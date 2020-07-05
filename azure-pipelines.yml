@@ -20,7 +20,7 @@ steps:
     command: test
     projects: '**/*Test/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
-    
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -38,3 +38,15 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish --conf...'
+  inputs:
+    command: publish
+    publishWebProjects: False
+    projects: 'src/SimpleAPI/SimpleAPI.sln'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True  
+
+- task: PublishBuildArtifact@1
+  displayName: 'publish artifacts'
