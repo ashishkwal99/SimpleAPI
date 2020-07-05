@@ -16,7 +16,7 @@ namespace SimpleAPI.Test
             IEnumerator<WeatherForecast> enumerator =  returnValue.GetEnumerator();
             enumerator.MoveNext();
 
-            Assert.Equal(40, enumerator.Current.TemperatureC);
+            Assert.Equal(42, enumerator.Current.TemperatureC);
         }
 
         [Fact]
